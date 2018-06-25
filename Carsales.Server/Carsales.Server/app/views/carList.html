@@ -1,0 +1,15 @@
+﻿
+<select class="form-control" ng-model="selected">
+    <option value="">Please select seller type</option>
+    <option ng-repeat="car in cars | unique:'SellerType'" value="{{car.SellerType}}">{{car.SellerType}}</option>
+</select>
+<br />
+<h3>List of cars</h3>
+<br />
+<li ng-repeat="car in cars | filter:selected">
+    <a ui-sref="cars.detail({id:car.Id})">
+        {{car.Make}} {{car.Model}} {{car.Year}} | ${{car.Price}} | {{car.SellerType}}
+    </a>
+</li>
+<hr />
+<div ui-view="detail"></div>
